@@ -1,0 +1,5 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/Enterprise/ThirdParty/EntLib50Src/Blocks/Caching/Tests/Cryptography.Tests/obj
