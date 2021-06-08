@@ -23,7 +23,12 @@ using Microsoft.Win32;
 
 namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentModel.Editors
 {
+    //TODO 作为RevitRibbonBuilder创建Ribbon菜单的参考 改进
+    //1.添加分类 比如按时间，或者按文件夹来分类
+    //2.批量载入，支持直接导入文件夹，然后显示其中含有 IExternalCommand实现的Dll
+
     /// <summary>
+    /// (加载)浏览程序集(dll)类型窗体<br/>
     /// Interaction logic for TypeBrowser.xaml
     /// </summary>
     public partial class TypeBrowser : Window
@@ -123,7 +128,8 @@ namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentMo
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2001:AvoidCallingProblematicMethods", MessageId = "System.Reflection.Assembly.LoadFrom")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability",
+            "CA2001:AvoidCallingProblematicMethods", MessageId = "System.Reflection.Assembly.LoadFrom")]
         private void AddFromFile_Click(object sender, RoutedEventArgs e)
         {
             var dialog =
@@ -199,6 +205,9 @@ namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentMo
                 MessageBoxButton.OK);
         }
 
+        /// <summary>
+        /// 载入后更新ViewModel
+        /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         private void UpdateViewModelAfterLoad()
         {
@@ -236,6 +245,10 @@ namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentMo
             get { return (TypeBrowserViewModel)this.DataContext; }
         }
 
+        /// <summary>
+        /// 获取程序集分组集合
+        /// </summary>
+        /// <returns></returns>
         private IEnumerable<AssemblyGroup> GetAssemblyGroups()
         {
             return this.assemblyDiscoveryService.GetAvailableAssemblies()

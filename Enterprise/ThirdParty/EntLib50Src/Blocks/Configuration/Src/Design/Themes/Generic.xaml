@@ -1,6 +1,7 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Microsoft.Practices.EnterpriseLibrary.Configuration.Design.Controls">
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Microsoft.Practices.EnterpriseLibrary.Configuration.Design.Controls">
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/Microsoft.Practices.EnterpriseLibrary.Configuration.DesignTime;component/Themes/ElementModelContainer.Generic.xaml" />
@@ -14,11 +15,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:SectionModelContainer}">
-                    <Expander IsExpanded="{Binding IsExpanded, Mode=TwoWay}"                            
-                              Style="{StaticResource SectionExpander}" 
-                              Focusable="False">
+                    <Expander
+                        Focusable="False"
+                        IsExpanded="{Binding IsExpanded, Mode=TwoWay}"
+                        Style="{StaticResource SectionExpander}">
                         <Expander.Header>
-                            <ContentControl Focusable="False" x:Name="PART_Header">
+                            <ContentControl x:Name="PART_Header" Focusable="False">
                                 <TextBlock DockPanel.Dock="Left" Text="{Binding Name}" />
                             </ContentControl>
                         </Expander.Header>
@@ -29,7 +31,7 @@
                             </Grid.ColumnDefinitions>
                             <Canvas x:Name="PART_RelationshipCanvas" />
 
-                            <ContentControl Focusable="False"  x:Name="PART_Content" />
+                            <ContentControl x:Name="PART_Content" Focusable="False" />
                         </Grid>
                     </Expander>
                 </ControlTemplate>

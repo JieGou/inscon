@@ -31,7 +31,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentMo
     /// </summary>
     public class TypeBrowserViewModel : INotifyPropertyChanged, INodeCreator
     {
-        readonly string typeConstraintDisplay;
+        private readonly string typeConstraintDisplay;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TypeBrowserViewModel"/> class with a type filter predicate.
@@ -42,7 +42,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentMo
         { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TypeBrowserViewModel"/> class with a 
+        /// Initializes a new instance of the <see cref="TypeBrowserViewModel"/> class with a
         /// <see cref="TypeBuildNodeConstraint"/> and a service provider.
         /// </summary>
         /// <param name="constraint">The constraint to use when filtering types.</param>
@@ -54,7 +54,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentMo
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TypeBrowserViewModel"/> class with a 
+        /// Initializes a new instance of the <see cref="TypeBrowserViewModel"/> class with a
         /// type filter predicate and a service provider.
         /// </summary>
         /// <param name="typeFilter">The type filter predicate.</param>
@@ -82,7 +82,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentMo
         }
 
         /// <summary>
-        /// Resolves the type represented by the current selection and the values for the generic type 
+        /// Resolves the type represented by the current selection and the values for the generic type
         /// parameters, if any.
         /// </summary>
         /// <returns>Returns the type represented by the current selection.</returns>
@@ -307,7 +307,7 @@ namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentMo
             return new AssemblyNode(assembly, this, this.typeFilter);
         }
 
-        #endregion
+        #endregion INodeCreator implementation
 
         private class NullServiceProvider : IServiceProvider
         {
@@ -674,14 +674,14 @@ namespace Microsoft.Practices.EnterpriseLibrary.Configuration.Design.ComponentMo
         }
     }
 
-    #endregion
+    #endregion Node classes
 
     /// <summary>
     /// Represents a generic type parameter in a generic type.
     /// </summary>
     public class GenericTypeParameter : Property
     {
-        private static readonly Attribute[] attributes = new Attribute[] { 
+        private static readonly Attribute[] attributes = new Attribute[] {
             new EditorAttribute(typeof(TypeSelectionEditor), typeof(UITypeEditor)),
             new EditorWithReadOnlyTextAttribute(true),
             new ResourceDescriptionAttribute(typeof(Properties.Resources), "GenericTypeParameter"),
